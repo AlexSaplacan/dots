@@ -72,6 +72,6 @@
   - ansible.builtin.file:
       src: /opt/blender278/blender
       dest: /usr/bin/blender278
-      owner: {{ lookup('env', 'USR') }}
-      group: {{ lookup('env', 'USR') }}
+      owner: "{{ lookup('env', 'USR') }}"
+      group: "{{ lookup('env', 'USR') }}"
       state: link
