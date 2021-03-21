@@ -15,30 +15,28 @@
 
 - name: Ensure mc is installed
   hosts: localhost
+  become: yes
   tasks:
   - apt:
       name: mc
       state: latest
-
-- name: Ensure mc is installed
-  hosts: localhost
-  tasks:
-  - apt:
-      name: mc
-      state: latest
+      update_cache: yes
 
 - name: Ensure vim is installed
   hosts: localhost
+  become: yes
   tasks:
   - apt:
       name: vim
       state: latest
+      update_cache: yes
   - copy:
       src: "files/master.vimrc"  
       dest: "~/.vimrc"
 
 - name: Ensure blender is installed for dependencies
   hosts: localhost
+  become: yes
   tasks:
   - apt:
       name: blender
@@ -46,6 +44,7 @@
 
 - name: Ensure blender is remomved
   hosts: localhost
+  become: yes
   tasks:
   - apt:
       name: blender
