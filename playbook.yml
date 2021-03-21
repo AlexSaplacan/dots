@@ -55,7 +55,7 @@
   tasks:
   - get_url:
       url: https://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc219-x86_64.tar.bz2
-      dest: /tmp/blender287.tar.gz
+      dest: /tmp/blender278tar.gz
 
 - name:  Extract /tmp/blender278.tar.bz in /opt/blender278
   hosts: localhost
