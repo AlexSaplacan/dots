@@ -1,10 +1,24 @@
 ---
+- name: Ensure git is installed
+  hosts: localhost
+  tasks:
+  - apt:
+      name: git
+      state: latest
+
 - name: Ensure ~/.gitconfig copied from files/master.gitconfig
   hosts: localhost
   tasks:
   - copy:
       src: "files/master.gitconfig"
       dest: "~/.gitconfig"
+
+- name: Ensure mc is installed
+  hosts: localhost
+  tasks:
+  - apt:
+      name: mc
+      state: latest
 
 - name: Ensure mc is installed
   hosts: localhost
@@ -21,4 +35,24 @@
       state: latest
   - copy:
       src: "files/master.vimrc"  
-      dest: "~/.vimrc
+      dest: "~/.vimrc"
+
+- name: Ensure blender is installed for dependencies
+  hosts: localhost
+  tasks:
+  - apt:
+      name: blender
+      state: latest
+
+- name: Ensure blender is remomved
+  hosts: localhost
+  tasks:
+  - apt:
+      name: blender
+      state: absent
+
+- name: Ensure download blender278
+  hosts: localhost
+  get_url:
+      url: https://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc219-x86_64.tar.bz2
+      dest: /tmp/blender287.tar.gz
