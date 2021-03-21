@@ -1,0 +1,24 @@
+---
+- name: Ensure ~/.gitconfig copied from files/master.gitconfig
+  hosts: localhost
+  tasks:
+  - copy:
+      src: "files/master.gitconfig"
+      dest: "~/.gitconfig"
+
+- name: Ensure mc is installed
+  hosts: localhost
+  tasks:
+  - apt:
+      name: mc
+      state: latest
+
+- name: Ensure vim is installed
+  hosts: localhost
+  tasks:
+  - apt:
+      name: vim
+      state: latest
+  - copy:
+      src: "files/master.vimrc"  
+      dest: "~/.vimrc
