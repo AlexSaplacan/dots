@@ -57,6 +57,15 @@
       url: https://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc219-x86_64.tar.bz2
       dest: /tmp/blender278.tar.bz2
 
+- name: Ensure /opt/blender278/ dir exists
+  hosts: localhost
+  become: yes
+  tasks:
+  - ansible.builtin.file:
+      path: /opt/blender278
+      state: directory
+
+
 - name:  Extract /tmp/blender278.tar.bz in /opt/blender278
   hosts: localhost
   become: yes
