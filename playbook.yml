@@ -77,7 +77,7 @@
   become: yes
   tasks:
   - copy:
-      src: /tmp/blender-2.78c-linux-glibc219-x6_64/*
+      src: /tmp/blender-2.78c-linux-glibc219-x86_64/*
       dest: /opt/blender278/
 
 
