@@ -70,7 +70,7 @@
   tasks:
   - ansible.builtin.file:
       path: /opt/blender278
-      stat: directory
+      state: directory
 
 - name: Ensure copy of extracted blender278 is on /opt/blender278
   hosts: localhost
