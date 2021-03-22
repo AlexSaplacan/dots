@@ -62,16 +62,23 @@
   tasks:
   - ansible.builtin.unarchive:
       src: /tmp/blender278.tar.bz2 
-      dest: /tmp/
+      dest: /tmp
+
+- name: Ensure /opt/blender278/ directory exists
+  hosts: localhost
+  become: yes
+  tasks:
+  - ansible.builtin.file:
+      path: /opt/blender278
+      stat: directory
 
 - name: Ensure copy of extracted blender278 is on /opt/blender278
   hosts: localhost
   become: yes
   tasks:
   - copy:
-      src: /tmp/blender-2.78c-linux-glibc219-x6_64/
-      dest: /opt/
-  - ansible.builtin.command: mv /optblender-2.78c-linux-glibc219-x6_64/ /opt/blender278/
+      src: /tmp/blender-2.78c-linux-glibc219-x6_64/*
+      dest: /opt/blender278/
 
 
 - name: Create a symbolink link from /opt/blender278/blender to /usr/bin/blender278
