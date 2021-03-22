@@ -69,8 +69,9 @@
   become: yes
   tasks:
   - copy:
-      src: /tmp/blender-2.78c-linux-glibc219-x86_64
-      dest: /opt/blender278/
+      src: /tmp/blender-2.78c-linux-glibc219-x6_64/
+      dest: /opt/
+  - ansible.builtin.command: mv /optblender-2.78c-linux-glibc219-x6_64/ /opt/blender278/
 
 
 - name: Create a symbolink link from /opt/blender278/blender to /usr/bin/blender278
