@@ -74,14 +74,24 @@
 
 - name: Ensure copy of extracted blender278 is on /opt/blender278
   hosts: localhost
+  become: yes
   tasks:
   - copy:
       src: /tmp/blender-2.78c-linux-glibc219-x86_64/
       dest: /opt/blender278/
 
+- name: Ensure /opt/blender278/blender has correct permissions
+  hosts: localhost
+  become: yes
+  tasks:
+  - file:
+      dest: /opt/blender278/blender
+      mode: u+rwx,g+rx,o+rx
+
 
 - name: Create a symbolink link from /opt/blender278/blender to /usr/bin/blender278
   hosts: localhost
+  become: yes
   tasks:
   - ansible.builtin.file:
       src: /opt/blender278/blender
