@@ -50,6 +50,16 @@
       name: blender
       state: absent
 
+ 
+- name: Ensure libglu1 is installed
+  hosts: localhost
+  become: yes
+  tasks:
+  - apt:
+      name: libglu1
+      state: latest
+      update_cache: yes
+
 - name: Ensure download blender278
   hosts: localhost
   tasks:
